@@ -26,10 +26,6 @@ public class HuffmanNode {
         return letter;
     }
 
-    public void setNode(FoundLetters leftNode,FoundLetters rightNode){
-        this.leftNode = leftNode;
-        this.rightNode = rightNode;
-    }
     public void setLetterCount(int lettercount){
         this.letterCount = lettercount;
     }

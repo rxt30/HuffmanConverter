@@ -1,5 +1,6 @@
 package com.company;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Coding {
@@ -12,16 +13,19 @@ public class Coding {
         this.wordToEncode = userInputWord.toLowerCase();
     }
 
+    public String getEncodedWord() {
+        return encodedWord;
+    }
 
     //Function, which get's called to encode the word given in the constructor
-    public String encode(){
+    public ArrayList<HuffmanNode> encode(){
         ArrayList<HuffmanNode> charsFound = generateCharAppearance();
         generateEncodingsPerLetter(charsFound);
-        for(int i = 0; i < charsFound.size();i++){
+        /*for(int i = 0; i < charsFound.size();i++){
             System.out.println(charsFound.get(i).getLetter() +":"+ charsFound.get(i).getCoding());
-        }
+        }*/
         generateEncodedWord(charsFound);
-        return encodedWord;
+        return charsFound;
     }
 
 
