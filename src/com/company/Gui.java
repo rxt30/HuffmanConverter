@@ -12,6 +12,7 @@ public class Gui implements ActionListener {
     private JLabel infoLabel;
     private JTextField inputBox;
     private JButton compressButton;
+    private JPanel inputPanel;
     private JPanel resultPanel;
 
     public void makeWindow(){
@@ -19,19 +20,23 @@ public class Gui implements ActionListener {
         this.mainWindow = new JFrame("Hello World");
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.setSize(600,600);
-        mainWindow.setLayout(new FlowLayout());
+        mainWindow.setLayout(new GridLayout(2,1));
 
         //Adding a Button and a TextField
+        inputPanel = new JPanel() ;
+
         infoLabel = new JLabel("Please enter word to decrypt: ");
-        mainWindow.add(infoLabel);
+        inputPanel.add(infoLabel);
 
         inputBox = new JTextField(50);
-        mainWindow.getContentPane().add(inputBox);
+        inputPanel.add(inputBox);
 
         compressButton = new JButton("Press to create Huffman-Coding");
         compressButton.setSize(mainWindow.getWidth(),20);
         compressButton.addActionListener(this);
-        mainWindow.add(compressButton);
+        inputPanel.add(compressButton);
+        mainWindow.add(inputPanel);
+
 
         resultPanel = new JPanel();
         mainWindow.add(resultPanel);

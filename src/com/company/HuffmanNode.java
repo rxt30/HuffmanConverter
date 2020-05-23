@@ -8,7 +8,7 @@ public class HuffmanNode {
     private char letter;
 
 
-
+    //Constructor
     public HuffmanNode(){}
 
     public HuffmanNode(HuffmanNode leftNode,HuffmanNode rightNode){
@@ -21,22 +21,29 @@ public class HuffmanNode {
     }
 
 
-    //Methods
-    public char getLetter() {
-        return letter;
-    }
-
+    //Setter
+    public void setLetter(char letter){ this.letter = letter; }
     public void setLetterCount(int lettercount){
         this.letterCount = lettercount;
     }
+    public void setLeftNode(HuffmanNode leftNode){this.leftNode = leftNode;}
+    public void setRightNode(HuffmanNode rightNode){this.rightNode = rightNode;}
 
+
+    //Getter
+    public char getLetter() {
+        return letter;
+    }
     public int getLetterCount(){
         return letterCount;
     }
     public String getCoding(){
         return this.coding;
     }
+    public HuffmanNode getLeftNode(){return this.leftNode;}
+    public HuffmanNode getRightNode(){return this.rightNode;}
 
+    //Methods
     public void increaseLetterCount(){
         this.letterCount++;
     }
