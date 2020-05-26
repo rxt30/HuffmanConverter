@@ -21,9 +21,6 @@ public class Coding {
     public ArrayList<HuffmanNode> encode(){
         ArrayList<HuffmanNode> charsFound = generateCharAppearance();
         generateEncodingsPerLetter(charsFound);
-        /*for(int i = 0; i < charsFound.size();i++){
-            System.out.println(charsFound.get(i).getLetter() +":"+ charsFound.get(i).getCoding());
-        }*/
         generateEncodedWord(charsFound);
         return charsFound;
     }
@@ -51,14 +48,20 @@ public class Coding {
         return foundCharsReturn;
     }
 
-    //Function to generate the coding for each letter
+    /*Function to generate the coding for each letter
+    To prevent losing entries in sortedChars by removing it, lettersProcessed is at the index of
+    the unprocessed Entrie with the lowest letterCount (begins at index 2, because sortedChars 1 & 2 are
+    used for the first parentNode)
+     */
     private void generateEncodingsPerLetter(ArrayList<HuffmanNode> sortedChars){
         HuffmanNode leftNode = null,rightNode = null;
         int lettersProcessed = 2;
         ArrayList<HuffmanNode> nodesList = new ArrayList<HuffmanNode>();
         nodesList.add(new HuffmanNode(sortedChars.get(0),sortedChars.get(1)));
+
+        /*------In this while loop the tree will be generated-------*/
         while(nodesList.size() > 1 || lettersProcessed < sortedChars.size()){
-            //Determine the left and the right node of the next parent node
+            //Determine the left and the right node of the next parent node, and also if a letter or a node is added as child
             if(lettersProcessed < sortedChars.size() && nodesList.get(0).getLetterCount() > sortedChars.get(lettersProcessed).getLetterCount()){
                 leftNode = sortedChars.get(lettersProcessed);
                 lettersProcessed++;
@@ -77,6 +80,7 @@ public class Coding {
             nodesList.add(0,new HuffmanNode(leftNode,rightNode));
             nodesList.sort(Comparator.comparing(HuffmanNode::getLetterCount));
         }
+        /*-------End of tree generation---------*/
         nodesList.get(0).addCoding("");
     }
 
